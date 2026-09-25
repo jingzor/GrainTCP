@@ -1,5 +1,17 @@
-const CFG = { defaultUUID: '7f3a9c2e-6b41-4d8f-a5e7-92c1f4b8d630', defaultProxyIP: 'sjc.o00o.ooo', chunk: 64 * 1024, dnPack: 32 * 1024, dnTail: 512, dnQr: 4, upPack: 20 * 1024, maxED: 8 * 1024, concur: 4 };
-export default { fetch: (req, env) => req.headers.get('Upgrade')?.toLowerCase() === 'websocket' ? ws(req, env) : new Response('Hello world!') };
+const CFG = {
+  defaultUUID: '7f3a9c2e-6b41-4d8f-a5e7-92c1f4b8d630',
+  defaultProxyIP: 'sjc.o00o.ooo',
+  chunk: 64 * 1024,
+  dnPack: 32 * 1024,
+  dnTail: 512, dnQr: 4,
+  upPack: 20 * 1024,
+  maxED: 8 * 1024,
+  concur: 4
+};
+export default {
+   fetch: (req, env) => req.headers.get('Upgrade')?.toLowerCase() === 'websocket' ? ws(req, env) : new Response('Hello world!')
+};
+
 const hex = c => (c > 64 ? c + 9 : c) & 0xF;
 // UUID 现在按连接动态转换（支持通过 env.UUID 覆盖），并做缓存避免重复计算
 const uuidToBytes = u => { const b = new Uint8Array(16); for (let i = 0, p = 0, c, h; i < 16; i++) { c = u.charCodeAt(p++); c === 45 && (c = u.charCodeAt(p++)); h = hex(c); c = u.charCodeAt(p++); c === 45 && (c = u.charCodeAt(p++)); b[i] = h << 4 | hex(c); } return b; };
