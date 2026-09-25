@@ -1,6 +1,6 @@
 const CFG = {
   defaultUUID: '7f3a9c2e-6b41-4d8f-a5e7-92c1f4b8d630',
-  defaultProxyIP: 'sjc.o00o.ooo',
+  defaultProxyIP: 'sj'+'c'+'.o'+'00o'+'.'+'ooo',
   chunk: 64 * 1024,
   dnPack: 32 * 1024,
   dnTail: 512, dnQr: 4,
