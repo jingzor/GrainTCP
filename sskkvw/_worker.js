@@ -9,7 +9,7 @@ const CFG = {
   concur: 4
 };
 export default {
-   fetch: (req, env) => req.headers.get('Upgrade')?.toLowerCase() === 'websocket' ? ws(req, env) : new Response('Hello world!')
+   fetch: (req, env) => req.headers.get('Upgrade')?.toLowerCase() === 'websocket' ? ws(req, env) : new Response(null, { status: 204 })
 };
 
 const hex = c => (c > 64 ? c + 9 : c) & 0xF;
